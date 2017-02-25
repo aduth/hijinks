@@ -1,5 +1,6 @@
 function hijinks( tag, attributes ) {
 	var element = document.createElement( tag ),
+		args = arguments,
 		i = 0,
 		child;
 
@@ -15,10 +16,10 @@ function hijinks( tag, attributes ) {
 		i = 1;
 	}
 
-	while ( i++ < arguments.length ) {
-		child = arguments[ i ];
+	while ( i++ < args.length ) {
+		child = args[ i ];
 		if ( null == child || child instanceof Array ) {
-			[].push.apply( arguments, child );
+			[].push.apply( args, child );
 			continue;
 		}
 
