@@ -1,0 +1,33 @@
+{
+  "name": "hijinks",
+  "version": "1.0.0",
+  "description": "Fun and tiny DOM builder utility inspired by HyperScript",
+  "scripts": {
+    "build": "echo \"module.exports = $(cat hijinks.js)\" > index.js",
+    "minify": "uglifyjs hijinks.js -c -m > hijinks.min.js",
+    "lint": "eslint hijinks.js",
+    "premocha": "npm run build",
+    "mocha": "mocha",
+    "test": "npm run lint && npm run mocha",
+    "prepublishOnly": "npm test && npm run build && npm run minify"
+  },
+  "author": {
+    "name": "Andrew Duthie",
+    "email": "andrew@andrewduthie.com",
+    "url": "http://andrewduthie.com"
+  },
+  "license": "MIT",
+  "files": [
+  	"index.js"
+  ],
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.16.1",
+    "eslint-config-wpcalypso": "^0.6.0",
+    "eslint-plugin-wpcalypso": "^3.0.2",
+    "jsdom": "^9.11.0",
+    "mocha": "^3.2.0",
+    "mocha-jsdom": "^1.1.0",
+    "uglify-js": "^2.7.5"
+  }
+}

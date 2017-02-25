@@ -1,0 +1,16 @@
+{
+	"root": true,
+	"extends": "wpcalypso",
+	"parserOptions": {
+		"ecmaVersion": 5
+	},
+	"env": {
+		"browser": true
+	},
+	"rules": {
+		"no-var": "off",
+		"no-unused-vars": [ "error", {
+			"varsIgnorePattern": "^hijinks$"
+		} ]
+	}
+}
