@@ -10,96 +10,130 @@ describe( 'hijinks()', () => {
 		global.Node = window.Node;
 	} );
 
-	it( 'should create element with tag name', () => {
-		const element = h( 'div' );
+	const vary = {
+		arguments: {
+			arguments: [
+				[ { className: 'example', 'data-ok': 1 } ],
+				( element ) => {
+					expect( element.className ).to.equal( 'example' );
+					expect( element.getAttribute( 'data-ok' ) ).to.equal( '1' );
+				}
+			],
+			'undefined arguments': [
+				[ undefined ],
+				() => {}
+			],
+			'without arguments': [
+				[],
+				() => {}
+			]
+		},
+		children: {
+			'no children': [
+				() => [],
+				( element ) => {
+					expect( element.childNodes ).to.be.empty;
+				}
+			],
+			'single child': [
+				( createChild ) => [ createChild() ],
+				( element ) => {
+					expect( element.childNodes ).to.have.lengthOf( 1 );
+				}
+			],
+			'array of children': [
+				( createChild ) => [ [ createChild(), createChild() ] ],
+				( element ) => {
+					expect( element.childNodes ).to.have.lengthOf( 2 );
+				}
+			],
+			'variadic arguments children': [
+				( createChild ) => [ createChild(), createChild() ],
+				( element ) => {
+					expect( element.childNodes ).to.have.lengthOf( 2 );
+				}
+			]
+		},
+		child: {
+			'null child': [
+				() => null,
+				( element ) => {
+					expect( element.childNodes ).to.be.empty;
+				},
+				false
+			],
+			'undefined child': [
+				() => undefined,
+				( element ) => {
+					expect( element.childNodes ).to.be.empty;
+				},
+				false
+			],
+			'zero child': [
+				() => 0,
+				( element ) => {
+					element.childNodes.forEach( ( childNode ) => {
+						expect( Node.TEXT_NODE === childNode.nodeType );
+						expect( '0' === childNode.nodeValue );
+					} );
+				},
+				true
+			],
+			'empty string child': [
+				() => '',
+				( element ) => {
+					element.childNodes.forEach( ( childNode ) => {
+						expect( Node.TEXT_NODE === childNode.nodeType );
+						expect( '' === childNode.nodeValue );
+					} );
+				},
+				true
+			],
+			'string child': [
+				() => 'foo',
+				( element ) => {
+					element.childNodes.forEach( ( childNode ) => {
+						expect( Node.TEXT_NODE === childNode.nodeType );
+						expect( 'foo' === childNode.nodeValue );
+					} );
+				},
+				true
+			],
+			'element child': [
+				() => h( 'span' ),
+				( element ) => {
+					element.childNodes.forEach( ( childNode ) => {
+						expect( Node.ELEMENT_NODE === childNode.nodeType );
+						expect( 'SPAN' === childNode.nodeName );
+					} );
+				},
+				true
+			]
+		}
+	};
 
-		expect( element ).to.be.an.instanceOf( HTMLElement );
-		expect( element.nodeName ).to.equal( 'DIV' );
-		expect( element.childNodes ).to.be.empty;
-	} );
+	for ( const varyArguments in vary.arguments ) {
+		for ( const varyChildren in vary.children ) {
+			for ( const varyChild in vary.child ) {
+				it( [ varyArguments, varyChildren, varyChild ].join( ', ' ), () => {
+					const [ args, assertArgs ] = vary.arguments[ varyArguments ];
+					const [ createChildren, assertChildren ] = vary.children[ varyChildren ];
+					const [ createChild, assertChild, countChild ] = vary.child[ varyChild ];
+					const element = h( 'div', ...args, ...createChildren( createChild ) );
 
-	it( 'should create element with attributes', () => {
-		const element = h( 'div', { className: 'example', 'data-ok': 1 } );
+					expect( element ).to.be.an.instanceOf( HTMLElement );
+					expect( element.nodeName ).to.equal( 'DIV' );
 
-		expect( element.className ).to.equal( 'example' );
-		expect( element.getAttribute( 'data-ok' ) ).to.equal( '1' );
-	} );
+					assertArgs( element );
+					assertChild( element );
 
-	it( 'should create element with attributes, without null child', () => {
-		const element = h( 'div', { className: 'example', 'data-ok': 1 }, null );
-
-		expect( element.childNodes ).to.be.empty;
-	} );
-
-	it( 'should create element with attributes and falsey child', () => {
-		const element = h( 'div', { className: 'example', 'data-ok': 1 }, 0 );
-
-		expect( element.childNodes ).to.have.lengthOf( 1 );
-		expect( element.childNodes[ 0 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 0 ].nodeValue ).to.equal( '0' );
-	} );
-
-	it( 'should create element with attributes and string child', () => {
-		const element = h( 'div', { className: 'example', 'data-ok': 1 }, 'Hello World' );
-
-		expect( element.childNodes ).to.have.lengthOf( 1 );
-		expect( element.childNodes[ 0 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 0 ].nodeValue ).to.equal( 'Hello World' );
-	} );
-
-	it( 'should create element with attributes and Element child', () => {
-		const element = h( 'div', { className: 'example', 'data-ok': 1 },
-			h( 'span', 'Hello World' )
-		);
-
-		expect( element.childNodes ).to.have.lengthOf( 1 );
-		expect( element.childNodes[ 0 ].nodeType ).to.equal( Node.ELEMENT_NODE );
-		expect( element.childNodes[ 0 ].nodeName ).to.equal( 'SPAN' );
-		expect( element.childNodes[ 0 ].childNodes[ 0 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 0 ].childNodes[ 0 ].nodeValue ).to.equal( 'Hello World' );
-	} );
-
-	it( 'should create element with attributes and array of children', () => {
-		const element = h( 'div', { className: 'example', 'data-ok': 1 }, [
-			h( 'span', 'Hello World' )
-		] );
-
-		expect( element.childNodes ).to.have.lengthOf( 1 );
-		expect( element.childNodes[ 0 ].nodeType ).to.equal( Node.ELEMENT_NODE );
-		expect( element.childNodes[ 0 ].nodeName ).to.equal( 'SPAN' );
-		expect( element.childNodes[ 0 ].childNodes[ 0 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 0 ].childNodes[ 0 ].nodeValue ).to.equal( 'Hello World' );
-	} );
-
-	it( 'should create element with child if no attributes passed', () => {
-		const element = h( 'div', 'Hello World' );
-
-		expect( element.childNodes ).to.have.lengthOf( 1 );
-		expect( element.childNodes[ 0 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 0 ].nodeValue ).to.equal( 'Hello World' );
-	} );
-
-	it( 'should create element with variadic child arguments', () => {
-		const element = h( 'div', 'Hello', 'World' );
-
-		expect( element.childNodes ).to.have.lengthOf( 2 );
-		expect( element.childNodes[ 0 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 0 ].nodeValue ).to.equal( 'Hello' );
-		expect( element.childNodes[ 1 ].nodeType ).to.equal( Node.TEXT_NODE );
-		expect( element.childNodes[ 1 ].nodeValue ).to.equal( 'World' );
-	} );
-
-	it( 'should create element with array of child arguments', () => {
-		const element = h( 'div', [ 'Hello ', h( 'span', 'World' ) ] );
-
-		expect( element.childNodes ).to.have.lengthOf( 2 );
-		expect( element.textContent ).to.equal( 'Hello World' );
-	} );
-
-	it( 'should create element with array of child arguments, without undefined or null', () => {
-		const element = h( 'div', [ 'Hello', undefined, null, ' ', h( 'span', 'World' ) ] );
-
-		expect( element.childNodes ).to.have.lengthOf( 3 );
-		expect( element.textContent ).to.equal( 'Hello World' );
-	} );
+					if ( countChild ) {
+						assertChildren( element );
+					} else {
+						expect( element.childNodes ).to.be.empty;
+					}
+				} );
+			}
+		}
+	}
 } );
