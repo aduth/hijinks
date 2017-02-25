@@ -1,20 +1,18 @@
 function hijinks( tag, attributes ) {
 	var element = document.createElement( tag ),
-		i = 1,
-		key, child;
+		i = 0,
+		child;
 
-	if ( null != attributes ) {
-		if ( attributes.constructor == Object ) {
-			for ( key in attributes ) {
-				if ( key in element ) {
-					element[ key ] = attributes[ key ];
-				} else {
-					element.setAttribute( key, attributes[ key ] );
-				}
+	if ( null != attributes && attributes.constructor == Object ) {
+		for ( i in attributes ) {
+			if ( i in element ) {
+				element[ i ] = attributes[ i ];
+			} else {
+				element.setAttribute( i, attributes[ i ] );
 			}
-		} else {
-			i--;
 		}
+
+		i = 1;
 	}
 
 	while ( i++ < arguments.length ) {
