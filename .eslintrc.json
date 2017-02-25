@@ -8,9 +8,10 @@
 		"browser": true
 	},
 	"rules": {
-		"no-var": "off",
+		"eqeqeq": "off",
 		"no-unused-vars": [ "error", {
 			"varsIgnorePattern": "^hijinks$"
-		} ]
+		} ],
+		"no-var": "off"
 	}
 }

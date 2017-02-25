@@ -7,7 +7,7 @@ function hijinks( tag, attributes, children ) {
 	}
 
 	if ( attributes ) {
-		if ( attributes.constructor === Object ) {
+		if ( attributes.constructor == Object ) {
 			for ( i in attributes ) {
 				if ( i in element ) {
 					element[ i ] = attributes[ i ];
@@ -26,7 +26,7 @@ function hijinks( tag, attributes, children ) {
 			continue;
 		}
 
-		if ( 1 !== child.nodeType ) {
+		if ( 1 != child.nodeType ) {
 			child = document.createTextNode( '' + child );
 		}
 
