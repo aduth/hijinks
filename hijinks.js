@@ -20,8 +20,8 @@ function hijinks( tag, attributes, children ) {
 		}
 	}
 
-	for ( i = 0; i < children.length; i++ ) {
-		child = children[ i ];
+	for ( i = 0; i < children.length; ) {
+		child = children[ i++ ];
 		if ( null == child ) {
 			continue;
 		}
