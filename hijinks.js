@@ -13,7 +13,7 @@ function hijinks( tag, attributes, children ) {
 	}
 
 	if ( attributes.constructor !== Object ) {
-		children = [].concat( attributes ).concat( children );
+		children = [].concat.call( attributes, children );
 		attributes = {};
 	}
 
