@@ -1,6 +1,6 @@
 {
   "name": "hijinks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fun and tiny DOM builder utility inspired by HyperScript",
   "scripts": {
     "build": "echo \"module.exports = $(cat hijinks.js)\" > index.js",
