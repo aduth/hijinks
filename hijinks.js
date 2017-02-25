@@ -1,28 +1,26 @@
-function hijinks( tag, attributes, children ) {
+function hijinks( tag, attributes ) {
 	var element = document.createElement( tag ),
-		i, child;
-
-	if ( ! ( children instanceof Array ) ) {
-		children = [ children ].concat( [].slice.call( arguments, 3 ) );
-	}
+		i = 1,
+		key, child;
 
 	if ( null != attributes ) {
 		if ( attributes.constructor == Object ) {
-			for ( i in attributes ) {
-				if ( i in element ) {
-					element[ i ] = attributes[ i ];
+			for ( key in attributes ) {
+				if ( key in element ) {
+					element[ key ] = attributes[ key ];
 				} else {
-					element.setAttribute( i, attributes[ i ] );
+					element.setAttribute( key, attributes[ key ] );
 				}
 			}
 		} else {
-			children = [].concat.call( attributes, children );
+			i--;
 		}
 	}
 
-	for ( i = 0; i < children.length; ) {
-		child = children[ i++ ];
-		if ( null == child ) {
+	while ( i++ < arguments.length ) {
+		child = arguments[ i ];
+		if ( null == child || child instanceof Array ) {
+			[].push.apply( arguments, child );
 			continue;
 		}
 
