@@ -32,7 +32,7 @@ function hijinks( tag, attributes, children ) {
 		}
 
 		if ( 1 !== child.nodeType ) {
-			child = document.createTextNode( String( child ) );
+			child = document.createTextNode( '' + child );
 		}
 
 		element.appendChild( child );
