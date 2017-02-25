@@ -22,7 +22,7 @@ function hijinks( tag, attributes ) {
 			continue;
 		}
 
-		if ( child.nodeType > 1 ) {
+		if ( 1 != child.nodeType ) {
 			child = document.createTextNode( '' + child );
 		}
 
