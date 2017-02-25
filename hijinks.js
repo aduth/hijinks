@@ -1,6 +1,6 @@
 function hijinks( tag, attributes, children ) {
 	var element = document.createElement( tag ),
-		key, i, child;
+		i, child;
 
 	if ( ! ( children instanceof Array ) ) {
 		children = [ children ];
@@ -10,11 +10,11 @@ function hijinks( tag, attributes, children ) {
 
 	if ( attributes ) {
 		if ( attributes.constructor === Object ) {
-			for ( key in attributes ) {
-				if ( key in element ) {
-					element[ key ] = attributes[ key ];
+			for ( i in attributes ) {
+				if ( i in element ) {
+					element[ i ] = attributes[ i ];
 				} else {
-					element.setAttribute( key, attributes[ key ] );
+					element.setAttribute( i, attributes[ i ] );
 				}
 			}
 		} else {
