@@ -1,5 +1,6 @@
 function hijinks( tag, attributes, children ) {
-	var element, key, i, child;
+	var element = document.createElement( tag ),
+		key, i, child;
 
 	if ( ! children || children.constructor !== Array ) {
 		children = [ children ];
@@ -15,8 +16,6 @@ function hijinks( tag, attributes, children ) {
 		children = [].concat( attributes ).concat( children );
 		attributes = {};
 	}
-
-	element = document.createElement( tag );
 
 	for ( key in attributes ) {
 		if ( key in element ) {
