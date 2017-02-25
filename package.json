@@ -11,6 +11,14 @@
     "test": "npm run lint && npm run mocha",
     "prepublishOnly": "npm test && npm run build && npm run minify"
   },
+  "homepage": "https://github.com/aduth/hijinks",
+  "bugs": {
+    "url": "https://github.com/aduth/hijinks/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aduth/hijinks.git"
+  },
   "author": {
     "name": "Andrew Duthie",
     "email": "andrew@andrewduthie.com",
