@@ -22,9 +22,9 @@ If included as a script in the browser, the `hijinks` function is available on t
 <script src="/path/to/hijinks.min.js"></script>
 <div id="target"></div>
 <script>
-const h = window.hijinks;
-const target = document.getElementById( 'target' );
-const element = h( 'span', { className: 'greeting' }, 'Hello World!' );
+var h = window.hijinks;
+var target = document.getElementById( 'target' );
+var element = h( 'span', { className: 'greeting' }, 'Hello World!' );
 target.appendChild( element );
 </script>
 ```
@@ -32,10 +32,10 @@ target.appendChild( element );
 When using the npm package, the Hijinks function is the default export of the module:
 
 ```js
-const h = require( 'hijinks' );
+var h = require( 'hijinks' );
 
-const target = document.getElementById( 'target' );
-const element = h( 'span', { className: 'greeting' }, 'Hello World!' );
+var target = document.getElementById( 'target' );
+var element = h( 'span', { className: 'greeting' }, 'Hello World!' );
 target.appendChild( element );
 ```
 
@@ -56,10 +56,10 @@ _babelrc.json_:
 _app.js_:
 
 ```jsx
-const h = require( 'hijinks' );
+var h = require( 'hijinks' );
 
-const target = document.getElementById( 'target' );
-const element = <span className="greeting">Hello World!</span>;
+var target = document.getElementById( 'target' );
+var element = <span className="greeting">Hello World!</span>;
 target.appendChild( element );
 ```
 
