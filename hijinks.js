@@ -8,20 +8,17 @@ function hijinks( tag, attributes, children ) {
 
 	children = children.concat( [].slice.call( arguments, 3 ) );
 
-	if ( ! attributes ) {
-		attributes = {};
-	}
-
-	if ( attributes.constructor !== Object ) {
-		children = [].concat.call( attributes, children );
-		attributes = {};
-	}
-
-	for ( key in attributes ) {
-		if ( key in element ) {
-			element[ key ] = attributes[ key ];
+	if ( attributes ) {
+		if ( attributes.constructor === Object ) {
+			for ( key in attributes ) {
+				if ( key in element ) {
+					element[ key ] = attributes[ key ];
+				} else {
+					element.setAttribute( key, attributes[ key ] );
+				}
+			}
 		} else {
-			element.setAttribute( key, attributes[ key ] );
+			children = [].concat.call( attributes, children );
 		}
 	}
 
