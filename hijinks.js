@@ -6,7 +6,7 @@ function hijinks( tag, attributes, children ) {
 		children = [ children ].concat( [].slice.call( arguments, 3 ) );
 	}
 
-	if ( attributes ) {
+	if ( null != attributes ) {
 		if ( attributes.constructor == Object ) {
 			for ( i in attributes ) {
 				if ( i in element ) {
