@@ -2,7 +2,7 @@ function hijinks( tag, attributes, children ) {
 	var element = document.createElement( tag ),
 		key, i, child;
 
-	if ( ! children || children.constructor !== Array ) {
+	if ( ! ( children instanceof Array ) ) {
 		children = [ children ];
 	}
 
