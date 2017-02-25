@@ -41,7 +41,7 @@ target.appendChild( element );
 
 You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://www.npmjs.com/package/babel-plugin-transform-react-jsx#options), specify the `pragma` option as the name of the variable you'll assign the imported `hijinks` module.
 
-_babelrc.json_:
+_.babelrc_:
 
 ```json
 {
