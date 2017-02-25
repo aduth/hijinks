@@ -3,10 +3,8 @@ function hijinks( tag, attributes, children ) {
 		i, child;
 
 	if ( ! ( children instanceof Array ) ) {
-		children = [ children ];
+		children = [ children ].concat( [].slice.call( arguments, 3 ) );
 	}
-
-	children = children.concat( [].slice.call( arguments, 3 ) );
 
 	if ( attributes ) {
 		if ( attributes.constructor === Object ) {
