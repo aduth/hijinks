@@ -1,11 +1,7 @@
 function hijinks( tag, attributes, children ) {
 	var element, key, i, child;
 
-	if ( null == children ) {
-		children = [];
-	}
-
-	if ( children.constructor !== Array ) {
+	if ( ! children || children.constructor !== Array ) {
 		children = [ children ];
 	}
 
