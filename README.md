@@ -68,12 +68,12 @@ target.appendChild( element );
 The hijinks module exports a single default function export:
 
 ```
-hijinks( tag: string, attributes: ?object, ...children: mixed[] ): HTMLElement
+hijinks( tag: string|Function, attributes: ?object, ...children: mixed[] ): HTMLElement
 ```
 
 **tag**
 
-The `nodeName` of the element to create.
+The tag name of the element to create, or a function ("component") which receives attributes including `children` and is expected to return an HTMLElement.
 
 **attributes**
 

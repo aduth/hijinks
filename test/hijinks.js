@@ -10,6 +10,10 @@ describe( 'hijinks()', () => {
 		global.Node = window.Node;
 	} );
 
+	function Component( { className, children } ) {
+		return h( 'div', { className: className }, children );
+	}
+
 	const vary = {
 		arguments: {
 			arguments: [
@@ -105,6 +109,17 @@ describe( 'hijinks()', () => {
 					element.childNodes.forEach( ( childNode ) => {
 						expect( Node.ELEMENT_NODE === childNode.nodeType );
 						expect( 'SPAN' === childNode.nodeName );
+					} );
+				},
+				true
+			],
+			'component child': [
+				() => h( Component, { className: 'example' }, 'Hello World' ),
+				( element ) => {
+					element.childNodes.forEach( ( childNode ) => {
+						expect( childNode.nodeName ).to.equal( 'DIV' );
+						expect( childNode.className ).to.equal( 'example' );
+						expect( childNode.textContent ).to.equal( 'Hello World' );
 					} );
 				},
 				true

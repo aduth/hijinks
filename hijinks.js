@@ -1,25 +1,35 @@
 function hijinks( tag, attributes ) {
-	var element = document.createElement( tag ),
-		args = arguments,
-		i = 0,
-		child;
+	var isComponent = 'string' != typeof tag,
+		hasAttributes = null != attributes && attributes.constructor == Object,
+		children = [].slice.call( arguments, hasAttributes ? 2 : 1 ),
+		props, element, i, child;
 
-	if ( null != attributes && attributes.constructor == Object ) {
+	if ( isComponent ) {
+		props = { children: children };
+	} else {
+		element = document.createElement( tag );
+	}
+
+	if ( hasAttributes ) {
 		for ( i in attributes ) {
-			if ( i in element ) {
+			if ( isComponent ) {
+				props[ i ] = attributes[ i ];
+			} else if ( i in element ) {
 				element[ i ] = attributes[ i ];
 			} else {
 				element.setAttribute( i, attributes[ i ] );
 			}
 		}
-
-		i = 1;
 	}
 
-	while ( i++ < args.length ) {
-		child = args[ i ];
+	if ( isComponent ) {
+		return tag( props );
+	}
+
+	while ( children.length ) {
+		child = children.shift();
 		if ( null == child || child instanceof Array ) {
-			[].push.apply( args, child );
+			[].push.apply( children, child );
 			continue;
 		}
 
