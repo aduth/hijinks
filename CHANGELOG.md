@@ -1,7 +1,16 @@
-## v1.1.1 (Unreleased)
+## v2.0.0 (Unreleased)
+
+### Breaking Changes
+
+- The attributes positional argument must always be provided, even if null or undefined.
+
+### Enhancements
+
+- For alignment with similar libraries, children can be passed either as an attribute or as a third argument, or as variadic argument after attributes.
 
 ### Optimization
 
+- Shrink bundle size by around 17%
 - Simplify append behavior
 
 ## v1.1.0 (2017-06-04)

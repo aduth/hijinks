@@ -1,47 +1,34 @@
-function hijinks(tag, attributes) {
+function hijinks(tag, attributes, children) {
 	var isComponent = 'string' != typeof tag,
-		hasAttributes = null != attributes && attributes.constructor == Object,
-		children = [].slice.call(arguments, hasAttributes ? 2 : 1),
-		props,
-		element,
-		i,
-		child;
+		elementOrProps,
+		i;
+
+	elementOrProps = isComponent ? {} : document.createElement(tag);
+
+	for (i in attributes) {
+		if (i == 'children') {
+			children = attributes[i];
+		} else if (isComponent || i in elementOrProps) {
+			elementOrProps[i] = attributes[i];
+		} else {
+			elementOrProps.setAttribute(i, attributes[i]);
+		}
+	}
+
+	children = Array.isArray(children) ? children : [children];
+	children.push.apply(children, [].slice.call(arguments, 3));
 
 	if (isComponent) {
-		props = { children: children };
-	} else {
-		element = document.createElement(tag);
+		elementOrProps.children = children;
+		return tag(elementOrProps);
 	}
 
-	if (hasAttributes) {
-		for (i in attributes) {
-			if (isComponent) {
-				props[i] = attributes[i];
-			} else if (i in element) {
-				element[i] = attributes[i];
-			} else {
-				element.setAttribute(i, attributes[i]);
-			}
-		}
-	}
+	elementOrProps.append.apply(
+		elementOrProps,
+		children.filter(function (child) {
+			return child != null;
+		})
+	);
 
-	if (isComponent) {
-		return tag(props);
-	}
-
-	while (children.length) {
-		child = children.shift();
-		if (null == child || child instanceof Array) {
-			[].push.apply(children, child);
-			continue;
-		}
-
-		if (!child.nodeType) {
-			child = document.createTextNode('' + child);
-		}
-
-		element.appendChild(child);
-	}
-
-	return element;
+	return elementOrProps;
 }

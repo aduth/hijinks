@@ -16,16 +16,21 @@ describe('hijinks()', () => {
 	}
 
 	const vary = {
-		arguments: {
-			arguments: [
-				[{ className: 'example', 'data-ok': 1 }],
+		attributes: {
+			object: [
+				{ className: 'example', 'data-ok': 1 },
 				(element) => {
 					expect(element.className).to.equal('example');
 					expect(element.getAttribute('data-ok')).to.equal('1');
 				},
 			],
-			'undefined arguments': [[undefined], () => {}],
-			'without arguments': [[], () => {}],
+			undefined: [undefined, () => {}],
+		},
+		childrenAs: {
+			attribute: (attributes, children) => [
+				{ ...attributes, children: children.flat() },
+			],
+			argument: (attributes, children) => [attributes, ...children],
 		},
 		children: {
 			'no children': [
@@ -122,28 +127,52 @@ describe('hijinks()', () => {
 		},
 	};
 
-	for (const varyArguments in vary.arguments) {
+	for (const varyAttributes in vary.attributes) {
 		for (const varyChildren in vary.children) {
 			for (const varyChild in vary.child) {
-				it([varyArguments, varyChildren, varyChild].join(', '), () => {
-					const [args, assertArgs] = vary.arguments[varyArguments];
-					const [createChildren, assertChildren] = vary.children[varyChildren];
-					const [createChild, assertChild, countChild] = vary.child[varyChild];
-					const element = h('div', ...args, ...createChildren(createChild));
+				for (const varyChildrenAs in vary.childrenAs) {
+					const assertion = [
+						varyAttributes,
+						varyChildrenAs,
+						varyChildren,
+						varyChild,
+					].join(', ');
 
-					expect(element).to.be.an.instanceOf(HTMLElement);
-					expect(element.nodeName).to.equal('DIV');
+					it(assertion, () => {
+						const [args, assertArgs] = vary.attributes[varyAttributes];
+						const [createChildren, assertChildren] =
+							vary.children[varyChildren];
+						const [createChild, assertChild, countChild] =
+							vary.child[varyChild];
+						const createArguments = vary.childrenAs[varyChildrenAs];
+						const element = h(
+							'div',
+							...createArguments({ ...args }, createChildren(createChild))
+						);
 
-					assertArgs(element);
-					assertChild(element);
+						expect(element).to.be.an.instanceOf(HTMLElement);
+						expect(element.nodeName).to.equal('DIV');
 
-					if (countChild) {
-						assertChildren(element);
-					} else {
-						expect(element.childNodes).to.be.empty;
-					}
-				});
+						assertArgs(element);
+						assertChild(element);
+
+						if (countChild) {
+							assertChildren(element);
+						} else {
+							expect(element.childNodes).to.be.empty;
+						}
+					});
+				}
 			}
 		}
 	}
+
+	it('does not mutate arguments', () => {
+		const args = { className: 'example' };
+		const originalArgs = { ...args };
+
+		h('div', args, ['1', 0]);
+
+		expect(args).to.deep.equal(originalArgs);
+	});
 });
