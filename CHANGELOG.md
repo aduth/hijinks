@@ -1,3 +1,9 @@
+## v1.1.1 (Unreleased)
+
+### Optimization
+
+- Simplify append behavior
+
 ## v1.1.0 (2017-06-04)
 
 ### New Features
@@ -6,7 +12,7 @@
 
 ## v1.0.2 (2017-02-24)
 
-### Improvements
+### Optimization
 
 - Further optimize children normalization logic, saving 13kb minified / 2kb gzipped
 
