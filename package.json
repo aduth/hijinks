@@ -29,13 +29,15 @@
     "index.js"
   ],
   "devDependencies": {
+    "@aduth/eslint-config": "^4.2.1",
     "chai": "^3.5.0",
-    "eslint": "^3.16.1",
-    "eslint-config-wpcalypso": "^0.6.0",
-    "eslint-plugin-wpcalypso": "^3.0.2",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "jsdom": "^16.6.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.2.0",
+    "prettier": "^2.3.2",
     "uglify-js": "^2.7.5"
   }
 }

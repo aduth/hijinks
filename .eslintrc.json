@@ -1,17 +1,20 @@
 {
 	"root": true,
-	"extends": "wpcalypso",
+	"extends": "@aduth/eslint-config/es5",
 	"parserOptions": {
-		"ecmaVersion": 3
+		"ecmaVersion": 5
 	},
 	"env": {
 		"browser": true
 	},
 	"rules": {
 		"eqeqeq": "off",
-		"no-unused-vars": [ "error", {
-			"varsIgnorePattern": "^hijinks$"
-		} ],
+		"no-unused-vars": [
+			"error",
+			{
+				"varsIgnorePattern": "^hijinks$"
+			}
+		],
 		"no-var": "off"
 	}
 }
