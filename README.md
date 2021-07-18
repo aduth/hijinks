@@ -6,7 +6,7 @@ Hijinks is a fun and tiny DOM builder utility inspired by [HyperScript](https://
 
 ## Installation
 
-For use in the browser, simply download and include [`hijinks.min.js`](./hijinks.min.js) as a script on your page.
+For use in the browser, simply download and include [`hijinks.min.js`](https://unpkg.com/hijinks/hijinks.min.js) as a script on your page.
 
 Hijinks is also available on npm:
 

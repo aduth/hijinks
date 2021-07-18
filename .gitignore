@@ -1,3 +1,6 @@
+# Dependencies
 node_modules
+
+# Generated
 index.js
-*.log
+hijinks.min.js
