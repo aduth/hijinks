@@ -70,8 +70,12 @@ target.appendChild(element);
 
 The hijinks module exports a single default function export:
 
-```
-hijinks( tag: string|Function, attributes: ?object, ...children: mixed[] ): HTMLElement
+```ts
+function hijinks(
+	tag: string,
+	attributes: Record<string, any>,
+	...children: Node | string | Array<Node | string> | HTMLCollection
+): HTMLElement;
 ```
 
 **tag**

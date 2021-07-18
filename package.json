@@ -27,6 +27,7 @@
 	},
 	"license": "MIT",
 	"files": [
+		"hijinks.d.ts",
 		"hijinks.js"
 	],
 	"devDependencies": {

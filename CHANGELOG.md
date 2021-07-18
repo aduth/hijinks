@@ -8,6 +8,7 @@
 ### Enhancements
 
 - For alignment with similar libraries, children can be passed either as an attribute or as a third argument, or as variadic argument after attributes.
+- Include TypeScript type definitions.
 
 ### Optimization
 
