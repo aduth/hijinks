@@ -16,5 +16,19 @@
 			}
 		],
 		"no-var": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": "test/**/*.js",
+			"extends": "@aduth/eslint-config",
+			"env": {
+				"node": true,
+				"es6": true,
+				"mocha": true
+			},
+			"parserOptions": {
+				"ecmaVersion": 2020
+			}
+		}
+	]
 }

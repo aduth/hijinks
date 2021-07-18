@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "echo \"module.exports = $(cat hijinks.js)\" > index.js",
 		"minify": "terser hijinks.js -c -m > hijinks.min.js",
-		"lint": "eslint hijinks.js",
+		"lint": "eslint hijinks.js test",
 		"premocha": "npm run build",
 		"mocha": "mocha -r jsdom-global/register",
 		"test": "npm run lint && npm run mocha",
