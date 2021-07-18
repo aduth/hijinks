@@ -8,7 +8,7 @@
 		"bundle": "npm run build && npm run minify",
 		"lint": "eslint hijinks.js test",
 		"premocha": "npm run build",
-		"mocha": "mocha -r jsdom-global/register",
+		"mocha": "mocha",
 		"test": "npm run lint && npm run mocha",
 		"prepublishOnly": "npm test && npm run bundle"
 	},

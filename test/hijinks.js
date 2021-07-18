@@ -1,10 +1,14 @@
+const jsdomGlobal = require('jsdom-global');
 const expect = require('chai').expect;
 const h = require('../');
 
 describe('hijinks()', () => {
-	before(() => {
-		global.HTMLElement = window.HTMLElement;
-		global.Node = window.Node;
+	before(function () {
+		this.jsdomCleanup = jsdomGlobal();
+	});
+
+	after(function () {
+		this.jsdomCleanup();
 	});
 
 	function Component({ className, children }) {
