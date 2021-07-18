@@ -4,7 +4,7 @@
 	"description": "Fun and tiny DOM builder utility inspired by HyperScript",
 	"scripts": {
 		"build": "echo \"module.exports = $(cat hijinks.js)\" > index.js",
-		"minify": "uglifyjs hijinks.js -c -m > hijinks.min.js",
+		"minify": "terser hijinks.js -c -m > hijinks.min.js",
 		"lint": "eslint hijinks.js",
 		"premocha": "npm run build",
 		"mocha": "mocha -r jsdom-global/register",
@@ -38,6 +38,6 @@
 		"jsdom-global": "^3.0.2",
 		"mocha": "^3.2.0",
 		"prettier": "^2.3.2",
-		"uglify-js": "^2.7.5"
+		"terser": "^5.7.1"
 	}
 }
