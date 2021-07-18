@@ -1,10 +1,7 @@
-const jsdom = require( 'mocha-jsdom' );
 const expect = require( 'chai' ).expect;
 const h = require( '../' );
 
 describe( 'hijinks()', () => {
-	jsdom();
-
 	before( () => {
 		global.HTMLElement = window.HTMLElement;
 		global.Node = window.Node;
