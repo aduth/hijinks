@@ -5,11 +5,12 @@
 	"scripts": {
 		"build": "echo \"module.exports = $(cat hijinks.js)\" > index.js",
 		"minify": "terser hijinks.js -c -m > hijinks.min.js",
+		"bundle": "npm run build && npm run minify",
 		"lint": "eslint hijinks.js test",
 		"premocha": "npm run build",
 		"mocha": "mocha -r jsdom-global/register",
 		"test": "npm run lint && npm run mocha",
-		"prepublishOnly": "npm test && npm run build && npm run minify"
+		"prepublishOnly": "npm test && npm run bundle"
 	},
 	"homepage": "https://github.com/aduth/hijinks",
 	"bugs": {
