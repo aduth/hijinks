@@ -1,4 +1,4 @@
-function hijinks(tag, attributes, children) {
+export default function hijinks(tag, attributes, children) {
 	var isComponent = 'string' != typeof tag,
 		elementOrProps,
 		i;

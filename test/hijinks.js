@@ -1,6 +1,6 @@
-const jsdomGlobal = require('jsdom-global');
-const expect = require('chai').expect;
-const h = require('../');
+import jsdomGlobal from 'jsdom-global';
+import { expect } from 'chai';
+import h from '../hijinks.js';
 
 describe('hijinks()', () => {
 	before(function () {

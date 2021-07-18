@@ -3,6 +3,7 @@
 ### Breaking Changes
 
 - The attributes positional argument must always be provided, even if null or undefined.
+- Drop support for Node v10.
 
 ### Enhancements
 
