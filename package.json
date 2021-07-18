@@ -8,7 +8,7 @@
 		"node": ">=12"
 	},
 	"scripts": {
-		"lint": "eslint hijinks.js test",
+		"lint": "eslint .",
 		"mocha": "mocha",
 		"test": "npm run lint && npm run mocha"
 	},
