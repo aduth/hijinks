@@ -22,21 +22,21 @@ If included as a script in the browser, the `hijinks` function is available on t
 <script src="/path/to/hijinks.min.js"></script>
 <div id="target"></div>
 <script>
-var h = window.hijinks;
-var target = document.getElementById( 'target' );
-var element = h( 'span', { className: 'greeting' }, 'Hello World!' );
-target.appendChild( element );
+	var h = window.hijinks;
+	var target = document.getElementById('target');
+	var element = h('span', { className: 'greeting' }, 'Hello World!');
+	target.appendChild(element);
 </script>
 ```
 
 When using the npm package, the Hijinks function is the default export of the module:
 
 ```js
-var h = require( 'hijinks' );
+var h = require('hijinks');
 
-var target = document.getElementById( 'target' );
-var element = h( 'span', { className: 'greeting' }, 'Hello World!' );
-target.appendChild( element );
+var target = document.getElementById('target');
+var element = h('span', { className: 'greeting' }, 'Hello World!');
+target.appendChild(element);
 ```
 
 You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://www.npmjs.com/package/babel-plugin-transform-react-jsx#options), specify the `pragma` option as the name of the variable you'll assign the imported `hijinks` module.
@@ -46,9 +46,12 @@ _.babelrc_:
 ```json
 {
 	"plugins": [
-		[ "transform-react-jsx", {
-			"pragma": "h"
-		} ]
+		[
+			"transform-react-jsx",
+			{
+				"pragma": "h"
+			}
+		]
 	]
 }
 ```
@@ -56,11 +59,11 @@ _.babelrc_:
 _app.js_:
 
 ```jsx
-var h = require( 'hijinks' );
+var h = require('hijinks');
 
-var target = document.getElementById( 'target' );
+var target = document.getElementById('target');
 var element = <span className="greeting">Hello World!</span>;
-target.appendChild( element );
+target.appendChild(element);
 ```
 
 ## API
