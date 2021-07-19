@@ -5,15 +5,15 @@ export type Component = (props: Attributes) => Node;
 export function Fragment(attributes: Attributes): DocumentFragment;
 
 export function createElement(
-	tag: Fragment,
+	tag: typeof Fragment,
 	attributes?: Attributes | null,
-	...children: Node | string | Array<Node | string> | HTMLCollection
+	...children: Array<Node | string | Array<Node | string> | HTMLCollection>
 ): DocumentFragment;
 
 export function createElement(
 	tag: string | Component,
 	attributes?: Attributes | null,
-	...children: Node | string | Array<Node | string> | HTMLCollection
+	...children: Array<Node | string | Array<Node | string> | HTMLCollection>
 ): Node;
 
-export const h = createElement;
+export { createElement as h };

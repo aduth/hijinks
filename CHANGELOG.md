@@ -1,3 +1,9 @@
+## v2.0.2 (Unreleased)
+
+### TypeScript
+
+- Fix TypeScript typings for `createElement` tag and children argument types.
+
 ## v2.0.1 (2021-07-19)
 
 ### Optimization
