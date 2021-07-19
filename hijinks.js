@@ -30,8 +30,7 @@ export function createElement(tag, attributes, children) {
 		}
 	}
 
-	children = Array.isArray(children) ? children : [children];
-	children.push.apply(children, [].slice.call(arguments, 3));
+	children = Array.isArray(children) ? children : [].slice.call(arguments, 2);
 
 	if (isComponent) {
 		elementOrProps.children = children;

@@ -1,3 +1,9 @@
+## v2.0.1 (Unreleased)
+
+### Optimization
+
+- Condense and simplify logic for children normalization (-15b).
+
 ## v2.0.0 (2021-07-18)
 
 ### Breaking Changes
