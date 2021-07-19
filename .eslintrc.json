@@ -9,6 +9,8 @@
 		"browser": true
 	},
 	"rules": {
+		"eqeqeq": "off",
+		"vars-on-top": "off"
 	},
 	"overrides": [
 		{

@@ -1,5 +1,11 @@
-export default function hijinks(
+type Attributes = Record<string, any>;
+
+export function Fragment(attributes: Attributes);
+
+export function createElement(
 	tag: string,
-	attributes: Record<string, any>,
+	attributes: Attributes,
 	...children: Node | string | Array<Node | string> | HTMLCollection
 ): HTMLElement;
+
+export const h = createElement;

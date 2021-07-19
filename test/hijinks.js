@@ -1,16 +1,16 @@
 import jsdomGlobal from 'jsdom-global';
 import { expect } from 'chai';
-import h from '../hijinks.js';
+import { h, Fragment } from '../hijinks.js';
 
-describe('hijinks()', () => {
-	before(function () {
-		this.jsdomCleanup = jsdomGlobal();
-	});
+before(function () {
+	this.jsdomCleanup = jsdomGlobal();
+});
 
-	after(function () {
-		this.jsdomCleanup();
-	});
+after(function () {
+	this.jsdomCleanup();
+});
 
+describe('h', () => {
 	function Component({ className, children }) {
 		return h('div', { className: className }, children);
 	}
@@ -174,5 +174,21 @@ describe('hijinks()', () => {
 		h('div', args, ['1', 0]);
 
 		expect(args).to.deep.equal(originalArgs);
+	});
+});
+
+describe('Fragment', () => {
+	it('returns a DocumentFragment', () => {
+		const result = h(Fragment, null, 1, 2);
+
+		expect(result).to.be.instanceOf(DocumentFragment);
+		expect(result.textContent).to.equal('12');
+	});
+
+	it('can be a child of another element', () => {
+		const result = h('div', null, h(Fragment, null, 1, 2));
+
+		expect(result.childNodes).to.have.lengthOf(2);
+		expect(result.textContent).to.equal('12');
 	});
 });

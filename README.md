@@ -6,9 +6,7 @@ Hijinks is a fun and tiny DOM builder utility inspired by [HyperScript](https://
 
 ## Installation
 
-For use in the browser, simply download and include [`hijinks.min.js`](https://unpkg.com/hijinks/hijinks.min.js) as a script on your page.
-
-Hijinks is also available on npm:
+Install via NPM:
 
 ```
 npm install hijinks
@@ -16,27 +14,15 @@ npm install hijinks
 
 ## Usage
 
-If included as a script in the browser, the `hijinks` function is available on the global scope:
-
 ```html
-<script src="/path/to/hijinks.min.js"></script>
 <div id="target"></div>
-<script>
-	var h = window.hijinks;
-	var target = document.getElementById('target');
-	var element = h('span', { className: 'greeting' }, 'Hello World!');
+<script type="module">
+	import { h } from 'https://unpkg.com/hijinks';
+	const h = window.hijinks;
+	const target = document.getElementById('target');
+	const element = h('span', { className: 'greeting' }, 'Hello World!');
 	target.appendChild(element);
 </script>
-```
-
-When using the npm package, the Hijinks function is the default export of the module:
-
-```js
-var h = require('hijinks');
-
-var target = document.getElementById('target');
-var element = h('span', { className: 'greeting' }, 'Hello World!');
-target.appendChild(element);
 ```
 
 You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://www.npmjs.com/package/babel-plugin-transform-react-jsx#options), specify the `pragma` option as the name of the variable you'll assign the imported `hijinks` module.
@@ -59,16 +45,18 @@ _.babelrc_:
 _app.js_:
 
 ```jsx
-var h = require('hijinks');
+import { h } from 'hijinks';
 
-var target = document.getElementById('target');
-var element = <span className="greeting">Hello World!</span>;
+const target = document.getElementById('target');
+const element = <span className="greeting">Hello World!</span>;
 target.appendChild(element);
 ```
 
 ## API
 
-The hijinks module exports a single default function export:
+### `createElement` (`h`)
+
+The hijinks module exports `createElement` (aliased as `h`) as a named export:
 
 ```ts
 function hijinks(
@@ -90,9 +78,19 @@ An optional object of attributes and `HTMLElement` properties to assign to the c
 
 The remainder of arguments can consist of one (or array of) `HTMLElement` or strings to be appended as children to the created DOM node. Of course, since the Hijinks itself returns an `HTMLElement`, it's expected that you can easily compose together trees of elements.
 
+### `Fragment`
+
+`Fragment` is also available and behaves similarly to [React fragments](https://reactjs.org/docs/fragments.html), returning a [`DocumentFragment`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment).
+
+```js
+import { h, Fragment } from 'hijinks';
+const fragment = <>Example</>;
+// Or: const fragment = h(Fragment, null, 'Example');
+```
+
 ## License
 
-Copyright (c) 2017 Andrew Duthie
+Copyright (c) 2017-2021 Andrew Duthie
 
 [The MIT License (MIT)](https://opensource.org/licenses/MIT)
 
@@ -101,3 +99,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
+
+```

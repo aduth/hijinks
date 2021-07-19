@@ -1,4 +1,19 @@
-export default function hijinks(tag, attributes, children) {
+function append(node, children) {
+	node.append.apply(
+		node,
+		children.filter(function (child) {
+			return child != null;
+		})
+	);
+}
+
+export function Fragment(attributes) {
+	var fragment = document.createDocumentFragment();
+	append(fragment, attributes.children);
+	return fragment;
+}
+
+export function createElement(tag, attributes, children) {
 	var isComponent = 'string' != typeof tag,
 		elementOrProps,
 		i;
@@ -23,12 +38,9 @@ export default function hijinks(tag, attributes, children) {
 		return tag(elementOrProps);
 	}
 
-	elementOrProps.append.apply(
-		elementOrProps,
-		children.filter(function (child) {
-			return child != null;
-		})
-	);
+	append(elementOrProps, children);
 
 	return elementOrProps;
 }
+
+export var h = createElement;

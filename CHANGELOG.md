@@ -4,9 +4,11 @@
 
 - The attributes positional argument must always be provided, even if null or undefined.
 - Drop support for Node v10.
+- There is no longer a default export. The `createElement` function is now a named argument, aliased as `h`.
 
 ### Enhancements
 
+- Support for fragments via the `Fragment` export.
 - For alignment with similar libraries, children can be passed either as an attribute or as a third argument, or as variadic argument after attributes.
 - Include TypeScript type definitions.
 
