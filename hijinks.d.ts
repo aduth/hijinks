@@ -1,4 +1,4 @@
-type Attributes = Record<string, any>;
+export type Attributes = Record<string, any>;
 
 export function Fragment(attributes: Attributes): DocumentFragment;
 

@@ -34,6 +34,7 @@
 	"files": [
 		"hijinks.d.ts",
 		"hijinks.js",
+		"jsx-runtime.d.ts",
 		"jsx-runtime.js"
 	],
 	"devDependencies": {
