@@ -43,8 +43,6 @@ _.babelrc_:
 _app.js_:
 
 ```jsx
-import { h } from 'hijinks';
-
 const target = document.getElementById('target');
 const element = <span className="greeting">Hello World!</span>;
 target.appendChild(element);
