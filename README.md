@@ -16,7 +16,6 @@ npm install hijinks
 <div id="target"></div>
 <script type="module">
 	import { h } from 'https://unpkg.com/hijinks';
-	const h = window.hijinks;
 	const target = document.getElementById('target');
 	const element = h('span', { className: 'greeting' }, 'Hello World!');
 	target.appendChild(element);
