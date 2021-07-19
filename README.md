@@ -58,11 +58,11 @@ target.appendChild(element);
 The hijinks module exports `createElement` (aliased as `h`) as a named export:
 
 ```ts
-function hijinks(
-	tag: string,
-	attributes: Record<string, any>,
+export function createElement(
+	tag: string | Component,
+	attributes: Attributes,
 	...children: Node | string | Array<Node | string> | HTMLCollection
-): HTMLElement;
+): Node;
 ```
 
 **tag**
