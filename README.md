@@ -40,7 +40,7 @@ _.babelrc_:
 }
 ```
 
-_app.js_:
+_app.jsx_:
 
 ```jsx
 const target = document.getElementById('target');
