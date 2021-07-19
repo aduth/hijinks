@@ -23,7 +23,7 @@ npm install hijinks
 </script>
 ```
 
-You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx), specify the `pragma` option as the name of the variable you'll assign the imported `hijinks` module.
+You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx), define Hijinks as the import source for the automatic runtime.
 
 _.babelrc_:
 
@@ -65,15 +65,15 @@ export function createElement(
 ): Node;
 ```
 
-**tag**
+#### `tag`
 
 The tag name of the element to create, or a function ("component") which receives attributes including `children` and is expected to return an HTMLElement.
 
-**attributes**
+#### `attributes`
 
 An optional object of attributes and `HTMLElement` properties to assign to the created element. Any properties not known to the `HTMLElement` interface are assigned as attributes.
 
-**children**
+#### `children`
 
 The remainder of arguments can consist of one (or array of) `HTMLElement` or strings to be appended as children to the created DOM node. Of course, since the Hijinks itself returns an `HTMLElement`, it's expected that you can easily compose together trees of elements.
 
@@ -98,7 +98,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
-```
