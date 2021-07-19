@@ -9,14 +9,6 @@
 		"browser": true
 	},
 	"rules": {
-		"eqeqeq": "off",
-		"no-unused-vars": [
-			"error",
-			{
-				"varsIgnorePattern": "^hijinks$"
-			}
-		],
-		"no-var": "off"
 	},
 	"overrides": [
 		{
