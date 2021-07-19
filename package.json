@@ -29,7 +29,8 @@
 	"license": "MIT",
 	"files": [
 		"hijinks.d.ts",
-		"hijinks.js"
+		"hijinks.js",
+		"jsx-runtime.js"
 	],
 	"devDependencies": {
 		"@aduth/eslint-config": "^4.2.1",

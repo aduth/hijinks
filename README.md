@@ -23,7 +23,7 @@ npm install hijinks
 </script>
 ```
 
-You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://www.npmjs.com/package/babel-plugin-transform-react-jsx#options), specify the `pragma` option as the name of the variable you'll assign the imported `hijinks` module.
+You can even create elements with JSX syntax if you so desire. Assuming you're using [the Babel JSX transform plugin](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx), specify the `pragma` option as the name of the variable you'll assign the imported `hijinks` module.
 
 _.babelrc_:
 
@@ -31,9 +31,10 @@ _.babelrc_:
 {
 	"plugins": [
 		[
-			"transform-react-jsx",
+			"@babel/plugin-transform-react-jsx",
 			{
-				"pragma": "h"
+				"runtime": "automatic",
+				"importSource": "hijinks"
 			}
 		]
 	]
