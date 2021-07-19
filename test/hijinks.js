@@ -175,6 +175,17 @@ describe('h', () => {
 
 		expect(args).to.deep.equal(originalArgs);
 	});
+
+	it('preserves original children in component handling', () => {
+		function ChildrenLength({ children }) {
+			return h(Fragment, null, children.length);
+		}
+
+		const children = ['a', null, undefined, 0, document.createElement('a')];
+		const element = h(ChildrenLength, null, children);
+
+		expect(element.textContent).to.equal('5');
+	});
 });
 
 describe('Fragment', () => {
