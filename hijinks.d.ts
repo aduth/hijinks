@@ -1,6 +1,6 @@
 type Attributes = Record<string, any>;
 
-export function Fragment(attributes: Attributes);
+export function Fragment(attributes: Attributes): DocumentFragment;
 
 export function createElement(
 	tag: string,
