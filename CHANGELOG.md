@@ -1,4 +1,4 @@
-## v2.0.1 (Unreleased)
+## v2.0.1 (2021-07-19)
 
 ### Optimization
 
