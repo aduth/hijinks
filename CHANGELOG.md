@@ -18,7 +18,7 @@
 
 ### Optimization
 
-- Shrink bundle size by around 17%
+- Shrink bundle size by around 17% in optimal scenarios (with tree-shaking)
 - Simplify append behavior
 
 ## v1.1.0 (2017-06-04)
