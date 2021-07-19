@@ -1,4 +1,4 @@
-## v2.0.2 (Unreleased)
+## v2.0.2 (2021-07-19)
 
 ### TypeScript
 
