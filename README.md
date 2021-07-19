@@ -60,7 +60,7 @@ The hijinks module exports `createElement` (aliased as `h`) as a named export:
 ```ts
 export function createElement(
 	tag: string | Component,
-	attributes: Attributes,
+	attributes?: Attributes | null,
 	...children: Node | string | Array<Node | string> | HTMLCollection
 ): Node;
 ```

@@ -6,7 +6,7 @@ export function Fragment(attributes: Attributes): DocumentFragment;
 
 export function createElement(
 	tag: string | Component,
-	attributes: Attributes,
+	attributes?: Attributes | null,
 	...children: Node | string | Array<Node | string> | HTMLCollection
 ): Node;
 
