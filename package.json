@@ -4,6 +4,10 @@
 	"type": "module",
 	"description": "Fun and tiny DOM builder utility inspired by HyperScript",
 	"main": "hijinks.js",
+	"exports": {
+		".": "./hijinks.js",
+		"./jsx-runtime": "./jsx-runtime.js"
+	},
 	"engines": {
 		"node": ">=12"
 	},
