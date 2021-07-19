@@ -71,7 +71,7 @@ The tag name of the element to create, or a function ("component") which receive
 
 **attributes**
 
-An optional object of attributes and `HTMLElement` properties to assign to the created element. Any properties not known to the `Element` interface
+An optional object of attributes and `HTMLElement` properties to assign to the created element. Any properties not known to the `HTMLElement` interface are assigned as attributes.
 
 **children**
 
