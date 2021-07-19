@@ -1,6 +1,6 @@
 # Hijinks
 
-Hijinks is a fun and tiny DOM builder utility inspired by [HyperScript](https://github.com/hyperhype/hyperscript). Relentlessly simple, it weighs in at less than 0.3kb gzipped. Despite its small size, you'll find it to be quite flexible and familiar if you've ever used React or similar libraries. None of this comes at the expense of compatibility; browser support has been confirmed as far back as Internet Explorer 6.
+Hijinks is a tiny DOM builder utility inspired by [HyperScript](https://github.com/hyperhype/hyperscript). Relentlessly simple, it weighs in at less than 0.3kb gzipped. Despite its small size, you'll find it to be quite flexible and familiar if you've ever used React or similar libraries. None of this comes at the expense of compatibility, as it still supports legacy browsers like Internet Explorer.
 
 ## Installation
 
