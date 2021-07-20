@@ -2,7 +2,9 @@
 
 ### Optimization
 
-- Condense and simplify logic for component test (-10b).
+- Condense and simplify logic (-12b):
+  - Component test (-10b)
+  - Children test (-2b).
 
 ## v2.0.2 (2021-07-19)
 
