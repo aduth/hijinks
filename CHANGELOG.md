@@ -4,7 +4,8 @@
 
 - Condense and simplify logic (-12b):
   - Component test (-10b)
-  - Children test (-2b).
+  - Children test (-2b)
+  - Fragment appending (-0b `createElement`, -5b `Fragment`)
 
 ## v2.0.2 (2021-07-19)
 

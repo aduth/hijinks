@@ -5,12 +5,11 @@ function append(node, children) {
 			return child != null;
 		})
 	);
+	return node;
 }
 
 export function Fragment(attributes) {
-	var fragment = document.createDocumentFragment();
-	append(fragment, attributes.children);
-	return fragment;
+	return append(document.createDocumentFragment(), attributes.children);
 }
 
 export function createElement(tag, attributes, children) {
@@ -33,14 +32,9 @@ export function createElement(tag, attributes, children) {
 	children =
 		(children && children.pop && children) || [].slice.call(arguments, 2);
 
-	if (isComponent) {
-		elementOrProps.children = children;
-		return tag(elementOrProps);
-	}
-
-	append(elementOrProps, children);
-
-	return elementOrProps;
+	return isComponent
+		? (elementOrProps.children = children) && tag(elementOrProps)
+		: append(elementOrProps, children);
 }
 
 export var h = createElement;
