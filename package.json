@@ -15,7 +15,8 @@
 	"scripts": {
 		"lint": "eslint .",
 		"mocha": "mocha",
-		"test": "npm run lint && npm run mocha"
+		"test": "npm run lint && npm run mocha",
+		"size": "echo \"export {createElement as default} from '.'\" | npm exec --yes esbuild -- --bundle --minify | npm exec --yes gzip-size-cli"
 	},
 	"homepage": "https://github.com/aduth/hijinks",
 	"bugs": {
