@@ -1,8 +1,12 @@
 ## v2.0.3 (Unreleased)
 
+### Bug Fixes
+
+- Fix an issue where a boolean child (`true` or `false`) is rendered as text.
+
 ### Optimization
 
-- Condense and simplify logic (-12b):
+- Condense and simplify logic (original savings -12b, overall -2b with bug fix):
   - Component test (-10b)
   - Children test (-2b)
   - Fragment appending (-0b `createElement`, -5b `Fragment`)

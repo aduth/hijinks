@@ -73,6 +73,20 @@ describe('h', () => {
 				},
 				false,
 			],
+			'false child': [
+				() => false,
+				(element) => {
+					expect(element.childNodes).to.be.empty;
+				},
+				false,
+			],
+			'true child': [
+				() => true,
+				(element) => {
+					expect(element.childNodes).to.be.empty;
+				},
+				false,
+			],
 			'zero child': [
 				() => 0,
 				(element) => {
