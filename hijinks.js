@@ -14,7 +14,7 @@ export function Fragment(attributes) {
 }
 
 export function createElement(tag, attributes, children) {
-	var isComponent = 'string' != typeof tag,
+	var isComponent = tag.call,
 		elementOrProps,
 		i;
 

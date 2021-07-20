@@ -1,3 +1,9 @@
+## v2.0.3 (Unreleased)
+
+### Optimization
+
+- Condense and simplify logic for component test (-10b).
+
 ## v2.0.2 (2021-07-19)
 
 ### TypeScript
