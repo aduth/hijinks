@@ -14,10 +14,8 @@ export function Fragment(attributes) {
 
 export function createElement(tag, attributes, children) {
 	var isComponent = tag.call,
-		elementOrProps,
+		elementOrProps = isComponent ? {} : document.createElement(tag),
 		i;
-
-	elementOrProps = isComponent ? {} : document.createElement(tag);
 
 	for (i in attributes) {
 		if (i == 'children') {
