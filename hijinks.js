@@ -1,10 +1,10 @@
 function append(node, children) {
-	node.append.apply(
-		node,
-		children.filter(function (child) {
-			return child != null && child !== !!child;
-		})
-	);
+	for (var i in children) {
+		children[i] != null &&
+			children[i] !== !!children[i] &&
+			node.append(children[i]);
+	}
+
 	return node;
 }
 
