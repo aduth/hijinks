@@ -6,11 +6,12 @@
 
 ### Optimization
 
-- Condense and simplify logic (original savings -13b, overall -3b with bug fix):
+- Condense and simplify logic (original savings -16b, overall -6b with bug fix):
   - Component test (-10b)
   - Children test (-2b)
   - Fragment appending (-0b `createElement`, -5b `Fragment`)
   - Assign props value in initialization (-1b)
+  - Simpler boolean comparison (-3b)
 
 ## v2.0.2 (2021-07-19)
 

@@ -2,7 +2,7 @@ function append(node, children) {
 	node.append.apply(
 		node,
 		children.filter(function (child) {
-			return child != null && child !== true && child !== false;
+			return child != null && child !== !!child;
 		})
 	);
 	return node;
