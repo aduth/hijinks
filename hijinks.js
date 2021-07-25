@@ -27,8 +27,7 @@ export function createElement(tag, attributes, children) {
 		}
 	}
 
-	children =
-		(children && children.pop && children) || [].slice.call(arguments, 2);
+	children = children && children.pop ? children : [].slice.call(arguments, 2);
 
 	return isComponent
 		? (elementOrProps.children = children) && tag(elementOrProps)
